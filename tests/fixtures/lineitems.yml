@@ -1,0 +1,9 @@
+lineitems:
+  - sku         : BL394D
+    quantity    : 4
+    description : Basketball
+    price       : 450.00
+  - sku         : BL394A
+    quantity    : 1
+    description : Basketball
+    price       : 150.00

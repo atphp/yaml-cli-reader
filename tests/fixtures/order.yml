@@ -1,0 +1,6 @@
+--- !clarkevans.com/^invoice
+id     : 34843
+date   : 2001-01-23
+
+imports:
+  - { lineitems: "./*items.yml" }
