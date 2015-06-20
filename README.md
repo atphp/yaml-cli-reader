@@ -1,4 +1,4 @@
-Yaml-CLI
+Yaml-CLI [![Build Status](https://travis-ci.org/olragon/yaml-cli.svg)](https://travis-ci.org/olragon/yaml-cli)
 ====
 
 Yaml validator
