@@ -3,9 +3,9 @@ Yaml-CLI [![Build Status](https://travis-ci.org/olragon/yaml-cli.svg)](https://t
 
 Yaml validator
 
-[x]: Yaml file validate with useful debug message
-[x]: Validate multiple files
-[x]: Support import syntax with glob file name
+- [x] Yaml file validate with useful debug message
+- [x] Validate multiple files
+- [x] Support import syntax with glob file name
 
 
 ## Install
