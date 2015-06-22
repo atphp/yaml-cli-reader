@@ -10,7 +10,7 @@ Yaml validator
 ## Install
 
 ```
-composer global require atphp/yaml-reader:~0.1.0
+composer global require atphp/yaml-cli-reader:~0.1.0
 ```
 
 ## Usage
