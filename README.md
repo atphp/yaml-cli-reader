@@ -16,13 +16,13 @@ composer global require atphp/yaml-reader:~0.1.0
 ## Usage
 
 ```
-yml /path/to/file.yml
+yaml-reader /path/to/file.yml
 ```
 
 ## Validate multiple files
 
 ```
-yml /path/to/file1.yml /path/to/file2.yml
+yaml-reader /path/to/file1.yml /path/to/file2.yml
 ```
 
 ## Import syntax
