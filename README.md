@@ -1,4 +1,4 @@
-Yaml CLI Reader [![Build Status](https://travis-ci.org/atphp/yaml-reader.svg)](https://travis-ci.org/atphp/yaml-reader)
+Yaml CLI Reader [![Build Status](https://travis-ci.org/atphp/yaml-cli-reader.svg)](https://travis-ci.org/atphp/yaml-cli-reader)
 ====
 
 Yaml validator
