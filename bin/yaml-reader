@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Yaml\Yaml;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+error_reporting(E_ERROR);
+ini_set('display_errors', 1);
+
+function main($argv, $opts)
+{
+    foreach ($argv as $file) {
+        if (file_exists($file)) {
+            try {
+                $value = parse_yaml_file($file);
+                $format = isset($opts['format']) ? $opts['format'] : 'json';
+                echo 'json' === $format ? json_encode($value, JSON_PRETTY_PRINT) : print_r($value, true);
+                echo "\n";
+            }
+            catch (ParseException $e) {
+                printf("Unable to parse the YAML string: %s", $e->getMessage());
+            }
+        }
+    }
+}
+
+function parse_yaml_file($file)
+{
+    $dir = dirname($file);
+    $value = Yaml::parse($file);
+
+    // Check imports
+    if (isset($value['imports'])) {
+        foreach ($value['imports'] as $import) {
+            foreach ($import as $glob) {
+                foreach (glob($dir . DIRECTORY_SEPARATOR . $glob) as $_file) {
+                    $_value = parse_yaml_file($_file);
+                    $value = array_merge_recursive($value, $_value);
+                }
+            }
+        }
+    }
+
+    return $value;
+}
+
+$opts = getopt('f::', array('format::'));
+array_shift($argv); # remove script filename
+main($argv, $opts);

@@ -1,4 +1,5 @@
 <?php
+
 namespace atphp\yaml_cli\test_cases;
 
 class YamlCLITest extends \PHPUnit_Framework_TestCase
@@ -6,32 +7,34 @@ class YamlCLITest extends \PHPUnit_Framework_TestCase
 
     public function getYml()
     {
-        return dirname(__DIR__) . '/bin/yml';
+        return dirname(__DIR__) . '/bin/yaml-reader';
     }
 
     public function testSimple()
     {
-        exec($this->getYml() . ' ./tests/fixtures/simple.yml', $output);
-        $this->assertTrue(strpos(implode("\n", $output), '[ship-to] => Array') > -1);
+        exec($this->getYml() . ' ' . __DIR__ . '/fixtures/simple.yml', $output);
+        $this->assertContains('"ship-to": {', implode('', $output));
     }
 
     public function testFormatJson()
     {
-        exec($this->getYml() . ' --format=json ./tests/fixtures/simple.yml', $output);
-        $value = json_decode(implode("\n", $output));
-        $this->assertTrue($value->product[0]->sku === 'BL394D');
+        exec($this->getYml() . ' ' . __DIR__ . '/fixtures/simple.yml', $output);
+        $this->assertContains(
+            'BL394D',
+            json_decode(implode("\n", $output))->product[0]->sku
+        );
     }
 
     public function testMultipleFile()
     {
-        exec($this->getYml() . ' ./tests/fixtures/simple.yml ./tests/fixtures/lineitems.yml', $output);
-        $this->assertTrue(strpos(implode("\n", $output), '[ship-to] => Array') > -1);
-        $this->assertTrue(strpos(implode("\n", $output), '[sku] => BL394A') > -1);
+        exec($this->getYml() . ' ' . __DIR__ . '/fixtures/lineitems.yml', $output);
+        $this->assertContains('"sku": "BL394A"', implode("\n", $output));
     }
 
     public function testImport()
     {
-        exec($this->getYml() . ' ./tests/fixtures/order.yml', $output);
-        $this->assertTrue(strpos(implode("\n", $output), '[sku] => BL394A') > -1);
+        exec($this->getYml() . ' ' . __DIR__ . '/fixtures/order.yml', $output);
+        $this->assertContains('"sku": "BL394A"', implode("\n", $output));
     }
+
 }

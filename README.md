@@ -1,4 +1,4 @@
-Yaml-CLI [![Build Status](https://travis-ci.org/olragon/yaml-cli.svg)](https://travis-ci.org/olragon/yaml-cli)
+Yaml CLI Reader [![Build Status](https://travis-ci.org/atphp/yaml-reader.svg)](https://travis-ci.org/atphp/yaml-reader)
 ====
 
 Yaml validator
@@ -7,11 +7,10 @@ Yaml validator
 - [x] Validate multiple files
 - [x] Support import syntax with glob file name
 
-
 ## Install
 
 ```
-composer global require atphp/yaml-cli:~0.1.0
+composer global require atphp/yaml-reader:~0.1.0
 ```
 
 ## Usage
