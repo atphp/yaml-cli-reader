@@ -3,10 +3,22 @@
 
 use Symfony\Component\Yaml\Yaml;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 error_reporting(E_ERROR);
 ini_set('display_errors', 1);
+
+$files = [
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php'
+];
+
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        require_once $file;
+        break;
+    }
+}
 
 function main($argv, $opts)
 {
